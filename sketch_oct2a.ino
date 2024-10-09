@@ -111,43 +111,4 @@ void loop() {
     doc1["value_of_sensor"] = mq2PPM / 100;  // Convert back to voltage for the JSON
     doc1["latitude"] = latitude;
     doc1["longitude"] = longitude;
-    doc1["parts_per_million"] = mq2PPM;
-    doc1["type_of_gas"] = mq2GasType;
-    
-    String jsonString1;
-    serializeJson(doc1, jsonString1);
-    
-    // Create JSON for MQ135
-    StaticJsonDocument<200> doc2;
-    doc2["type_of_sensor"] = "MQ135";
-    doc2["value_of_sensor"] = mq135PPM / 100;  // Convert back to voltage for the JSON
-    doc2["latitude"] = latitude;
-    doc2["longitude"] = longitude;
-    doc2["parts_per_million"] = mq135PPM;
-    doc2["type_of_gas"] = mq135GasType;
-    
-    String jsonString2;
-    serializeJson(doc2, jsonString2);
-    
-    // Store in the sensor data array
-    for (int i = 0; i < ARRAY_SIZE - 1; i++) { 
-        sensorDataArray[i] = sensorDataArray[i + 1]; 
-    }
-    
-    // Add the two JSON strings (MQ2 and MQ135) to the array
-    sensorDataArray[ARRAY_SIZE - 2] = jsonString1; 
-    sensorDataArray[ARRAY_SIZE - 1] = jsonString2;
-    
-    // Print the array of sensor data
-    Serial.println("Sensor Data Array:");
-    Serial.println("[");
-    for (int i = 0; i < ARRAY_SIZE; i++) { 
-        Serial.println(sensorDataArray[i]); 
-        if (i < ARRAY_SIZE - 1) { 
-            Serial.println(","); 
-        } 
-    }
-    Serial.println("]");
-    
-    delay(5000);  // Wait 5 seconds before reading again
-}
+    doc1
