@@ -22,7 +22,7 @@ void setupGSM() {
     delay(1000);
     gsm.println("AT+SAPBR=3,1,\"CONTYPE\",\"GPRS\""); // Set GPRS connection
     delay(1000);
-    gsm.println("AT+SAPBR=3,1,\"APN\","internet.comcel.com.co"); // Replace with your APN
+    gsm.println("AT+SAPBR=3,1,\"APN\",\"internet.comcel.com.co\""); // Replace with your APN
     delay(1000);
     gsm.println("AT+SAPBR=1,1"); // Activate GPRS
     delay(1000);
