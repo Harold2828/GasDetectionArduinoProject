@@ -1,8 +1,9 @@
+
 #include <SoftwareSerial.h>
 
-SoftwareSerial gsm(8, 9); // RX, TX
+SoftwareSerial gsm(7, 8); // RX, TX
 
-String phoneNumber = "+573138133118"; // Replace with the recipient's phone number
+String phoneNumbers[] = {"+573138133118", "+573192559588"}; // Replace with the recipient's phone numbers
 
 void setup() {
   Serial.begin(9600);
@@ -26,7 +27,7 @@ void setup() {
   delay(1000);
 }
 
-void sendSMS(String message) {
+void sendSMS(String message, String phoneNumber) {
   gsm.print("AT+CMGS=\"");
   gsm.print(phoneNumber);
   gsm.println("\"");
@@ -35,10 +36,13 @@ void sendSMS(String message) {
   delay(1000);
   gsm.write(26); // ASCII code for Ctrl+Z, which indicates the end of the message
   delay(1000);
-  Serial.println("SMS sent: " + message);
+  Serial.println("SMS sent to " + phoneNumber + ": " + message);
 }
 
 void loop() {
-  sendSMS("Hello, this is a test message from Arduino!");
-  delay(60000); // Wait for 1 minute before sending the next message
+  for (int i = 0; i < sizeof(phoneNumbers)/sizeof(phoneNumbers[0]); i++) {
+    sendSMS("Hello, this is a test message from Arduino!", phoneNumbers[i]);
+    delay(5000); // Wait for 5 seconds between messages
+  }
+  delay(60000); // Wait for 1 minute before sending the next batch of messages
 }
