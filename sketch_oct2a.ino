@@ -3,7 +3,7 @@
 
 const int MQ2_PIN = A5;
 const int MQ135_PIN = A2;
-SoftwareSerial gsm(9, 8); // RX, TX
+SoftwareSerial gsm(8, 9); // RX, TX
 String phoneNumber = "+573138133118";
 const int ARRAY_SIZE = 10;
 String sensorDataArray[ARRAY_SIZE];
