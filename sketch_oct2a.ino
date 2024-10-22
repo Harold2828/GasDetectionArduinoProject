@@ -1,10 +1,9 @@
 
 #include <SoftwareSerial.h>
 
-SoftwareSerial gsm(7, 8); // RX, TX
-
-String phoneNumbers[] = {"+573138133118", "+573192559588"}; // Replace with the recipient's phone numbers
-
+SoftwareSerial gsm(8, 9); // RX, TX
+String phoneNumbers[] = {"+573138133118", "+573192559588", "+573114977164"}; // Replace with the recipient's phone numbers
+ 
 void setup() {
   Serial.begin(9600);
   gsm.begin(9600);
